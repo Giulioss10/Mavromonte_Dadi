@@ -1,0 +1,484 @@
+[gd_scene load_steps=18 format=3 uid="uid://dm3f2af4uadoq"]
+
+[ext_resource type="Texture2D" uid="uid://27y3lah2xcp1" path="res://textures/Mavromonte_simmetrico.png" id="1_aynem"]
+[ext_resource type="Script" uid="uid://big2olu3xtkd5" path="res://scripts/scena_master.gd" id="1_jooxx"]
+[ext_resource type="Theme" uid="uid://d2bwcbyldukri" path="res://themes/tema_griglie.tres" id="3_q3f5g"]
+[ext_resource type="Texture2D" uid="uid://sj2fwcw8glop" path="res://textures/attacco.png" id="4_2o3k7"]
+[ext_resource type="Theme" uid="uid://cir72hsfu4bhs" path="res://themes/tema_contatori.tres" id="5_4lx3a"]
+[ext_resource type="Theme" uid="uid://cobum0ciwvcn5" path="res://themes/tema_pulsanti.tres" id="5_kjytq"]
+[ext_resource type="Texture2D" uid="uid://i05kamv0ljnf" path="res://textures/attacco+1.png" id="5_l2s8w"]
+[ext_resource type="Script" uid="uid://bgfxsdjw362d3" path="res://scripts/pulsante_tira.gd" id="6_2o3k7"]
+[ext_resource type="Texture2D" uid="uid://s7p7qsnx34h" path="res://textures/arcano.png" id="6_4lx3a"]
+[ext_resource type="Script" uid="uid://s5ocp4ctgsgb" path="res://scripts/pulsante_meno.gd" id="6_xorf0"]
+[ext_resource type="Texture2D" uid="uid://dmf04nqhjs5j3" path="res://textures/difesa.png" id="7_xorf0"]
+[ext_resource type="Texture2D" uid="uid://4a48nnnat4w6" path="res://textures/attacco_adf.png" id="8_4lx3a"]
+[ext_resource type="Texture2D" uid="uid://b5pfrlao2wdnw" path="res://textures/difesa+1.png" id="8_jsa5t"]
+[ext_resource type="Script" uid="uid://cyucs1ltrh6mk" path="res://scripts/pulsante_piu.gd" id="8_wxkj7"]
+[ext_resource type="Texture2D" uid="uid://bvmx2c7uifufe" path="res://textures/schivata.png" id="9_wxkj7"]
+[ext_resource type="Texture2D" uid="uid://d1jdemxgoyqd0" path="res://textures/attacco_adf+1.png" id="9_xorf0"]
+[ext_resource type="Texture2D" uid="uid://cy8kobwndinnk" path="res://textures/orrido.png" id="12_2d8mo"]
+
+[node name="Master" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jooxx")
+
+[node name="Sfondo" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(720, 720)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_aynem")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Griglia Verticale" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -158.5
+offset_right = 128.0
+offset_bottom = 158.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_q3f5g")
+theme_override_constants/separation = 25
+
+[node name="Griglia Orizzontale 1" type="HBoxContainer" parent="Griglia Verticale"]
+layout_mode = 2
+theme = ExtResource("3_q3f5g")
+
+[node name="Dadi Atacco" type="VBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 1"]
+layout_mode = 2
+theme = ExtResource("3_q3f5g")
+theme_override_constants/separation = 0
+
+[node name="Icona Attacco" type="TextureRect" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("4_2o3k7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Contatore" type="HBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="Meno" type="Button" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "-"
+script = ExtResource("6_xorf0")
+
+[node name="Numero" type="Label" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore"]
+layout_mode = 2
+theme = ExtResource("5_4lx3a")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Più" type="Button" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "+"
+script = ExtResource("8_wxkj7")
+
+[node name="Dadi Atacco +1" type="VBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 1"]
+layout_mode = 2
+theme = ExtResource("3_q3f5g")
+theme_override_constants/separation = 0
+
+[node name="Icona Attacco +1" type="TextureRect" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("5_l2s8w")
+expand_mode = 1
+
+[node name="Contatore" type="HBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="Meno" type="Button" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "-"
+script = ExtResource("6_xorf0")
+
+[node name="Numero" type="Label" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore"]
+layout_mode = 2
+theme = ExtResource("5_4lx3a")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Più" type="Button" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "+"
+script = ExtResource("8_wxkj7")
+
+[node name="Dadi Arcano" type="VBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 1"]
+layout_mode = 2
+theme = ExtResource("3_q3f5g")
+theme_override_constants/separation = 0
+
+[node name="Icona Arcano" type="TextureRect" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("6_4lx3a")
+expand_mode = 1
+
+[node name="Contatore" type="HBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="Meno" type="Button" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "-"
+script = ExtResource("6_xorf0")
+
+[node name="Numero" type="Label" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore"]
+layout_mode = 2
+theme = ExtResource("5_4lx3a")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Più" type="Button" parent="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "+"
+script = ExtResource("8_wxkj7")
+
+[node name="Griglia Orizzontale 2" type="HBoxContainer" parent="Griglia Verticale"]
+layout_mode = 2
+theme = ExtResource("3_q3f5g")
+
+[node name="Dadi Attacco ADF" type="VBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 2"]
+layout_mode = 2
+theme = ExtResource("3_q3f5g")
+theme_override_constants/separation = 0
+
+[node name="Icona Attacco ADF" type="TextureRect" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("8_4lx3a")
+expand_mode = 1
+
+[node name="Contatore" type="HBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="Meno" type="Button" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "-"
+script = ExtResource("6_xorf0")
+
+[node name="Numero" type="Label" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore"]
+layout_mode = 2
+theme = ExtResource("5_4lx3a")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Più" type="Button" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "+"
+script = ExtResource("8_wxkj7")
+
+[node name="Dadi Attacco ADF +1" type="VBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 2"]
+layout_mode = 2
+theme = ExtResource("3_q3f5g")
+theme_override_constants/separation = 0
+
+[node name="Icona Attacco ADF +1" type="TextureRect" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("9_xorf0")
+expand_mode = 1
+
+[node name="Contatore" type="HBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="Meno" type="Button" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "-"
+script = ExtResource("6_xorf0")
+
+[node name="Numero" type="Label" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore"]
+layout_mode = 2
+theme = ExtResource("5_4lx3a")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Più" type="Button" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "+"
+script = ExtResource("8_wxkj7")
+
+[node name="Dadi Orridi" type="VBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 2"]
+layout_mode = 2
+theme = ExtResource("3_q3f5g")
+theme_override_constants/separation = 0
+
+[node name="Icona Orrido" type="TextureRect" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("12_2d8mo")
+expand_mode = 1
+
+[node name="Contatore" type="HBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="Meno" type="Button" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "-"
+script = ExtResource("6_xorf0")
+
+[node name="Numero" type="Label" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore"]
+layout_mode = 2
+theme = ExtResource("5_4lx3a")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Più" type="Button" parent="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "+"
+script = ExtResource("8_wxkj7")
+
+[node name="Griglia Orizzontale 3" type="HBoxContainer" parent="Griglia Verticale"]
+layout_mode = 2
+theme = ExtResource("3_q3f5g")
+
+[node name="Dadi Difesa" type="VBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 3"]
+layout_mode = 2
+theme = ExtResource("3_q3f5g")
+theme_override_constants/separation = 0
+
+[node name="Icona Difesa" type="TextureRect" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("7_xorf0")
+expand_mode = 1
+
+[node name="Contatore" type="HBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="Meno" type="Button" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "-"
+script = ExtResource("6_xorf0")
+
+[node name="Numero" type="Label" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore"]
+layout_mode = 2
+theme = ExtResource("5_4lx3a")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Più" type="Button" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "+"
+script = ExtResource("8_wxkj7")
+
+[node name="Dadi Difesa +1" type="VBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 3"]
+layout_mode = 2
+theme = ExtResource("3_q3f5g")
+theme_override_constants/separation = 0
+
+[node name="Icona Difesa +1" type="TextureRect" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("8_jsa5t")
+expand_mode = 1
+
+[node name="Contatore" type="HBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="Meno" type="Button" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "-"
+script = ExtResource("6_xorf0")
+
+[node name="Numero" type="Label" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore"]
+layout_mode = 2
+theme = ExtResource("5_4lx3a")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Più" type="Button" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "+"
+script = ExtResource("8_wxkj7")
+
+[node name="Dadi Schivata" type="VBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 3"]
+layout_mode = 2
+theme = ExtResource("3_q3f5g")
+theme_override_constants/separation = 0
+
+[node name="Icona Schivata" type="TextureRect" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("9_wxkj7")
+expand_mode = 1
+
+[node name="Contatore" type="HBoxContainer" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="Meno" type="Button" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "-"
+script = ExtResource("6_xorf0")
+
+[node name="Numero" type="Label" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore"]
+layout_mode = 2
+theme = ExtResource("5_4lx3a")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Più" type="Button" parent="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+theme_override_font_sizes/font_size = 20
+text = "+"
+script = ExtResource("8_wxkj7")
+
+[node name="Tira" type="Button" parent="Griglia Verticale"]
+layout_mode = 2
+theme = ExtResource("5_kjytq")
+text = "Tira!"
+script = ExtResource("6_2o3k7")
+
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore/Meno" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore/Meno" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore/Meno" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore/Più" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore/Più" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco/Contatore/Più" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore/Meno" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore/Meno" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore/Meno" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore/Più" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore/Più" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Atacco +1/Contatore/Più" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore/Meno" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore/Meno" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore/Meno" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore/Più" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore/Più" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 1/Dadi Arcano/Contatore/Più" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore/Meno" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore/Meno" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore/Meno" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore/Più" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore/Più" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF/Contatore/Più" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore/Meno" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore/Meno" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore/Meno" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore/Più" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore/Più" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Attacco ADF +1/Contatore/Più" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore/Meno" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore/Meno" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore/Meno" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore/Più" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore/Più" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 2/Dadi Orridi/Contatore/Più" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore/Meno" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore/Meno" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore/Meno" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore/Più" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore/Più" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa/Contatore/Più" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore/Meno" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore/Meno" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore/Meno" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore/Più" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore/Più" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Difesa +1/Contatore/Più" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore/Meno" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore/Meno" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore/Meno" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore/Meno" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore/Più" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore/Più" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore/Più" to="Griglia Verticale/Griglia Orizzontale 3/Dadi Schivata/Contatore/Più" method="_on_pressed"]
+[connection signal="mouse_entered" from="Griglia Verticale/Tira" to="Griglia Verticale/Tira" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Griglia Verticale/Tira" to="Griglia Verticale/Tira" method="_on_mouse_exited"]
+[connection signal="pressed" from="Griglia Verticale/Tira" to="Griglia Verticale/Tira" method="_on_pressed"]

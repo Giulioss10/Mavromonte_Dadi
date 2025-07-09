@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://wwxiwltj56gj"]
+
+[ext_resource type="Texture2D" uid="uid://27y3lah2xcp1" path="res://textures/Mavromonte_simmetrico.png" id="1_70346"]
+[ext_resource type="Script" uid="uid://ci6pebll6ivcn" path="res://scripts/scena_giocatore.gd" id="1_ly4am"]
+
+[node name="giocatore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ly4am")
+
+[node name="Sfondo" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(720, 720)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_70346")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LinkButton" type="LinkButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -130.0
+offset_right = 109.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "non dovresti essere qui"
+underline = 1
+uri = "https://www.youtube.com/watch?v=xvFZjo5PgG0"
